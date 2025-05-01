@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{CS6515 DP 1 Exercise}
+\author{ Your Name }
+\date{Apr 30 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{6.1}
+A contiguous subsequence of a list \( S \) is a subsequence made up of consecutive elements of \( S \). For instance, if \( S \) is
+\[ 5, 15, -30, 10, -5, 40, 10, \]
+then \( 15, -30, 10 \) is a contiguous subsequence but \( 5, 15, 40 \) is not. Give a linear-time algorithm for the following task:
+\begin{quote}
+Input: A list of numbers, \( a_1, a_2, \ldots, a_n \).
+
+Output: The contiguous subsequence of maximum sum (a subsequence of length zero has sum zero).
+\end{quote}
+For the preceding example, the answer would be \( 10, -5, 40, 10 \), with a sum of 55.\\
+Hint: For each \( j \in \{1, 2, \ldots, n\} \), consider contiguous subsequences ending exactly at position \( j \).
+
+\section{6.2}
+You are going on a long trip. You start on the road at mile post 0. Along the way there are \( n \) hotels, at mile posts \( a_1 < a_2 < \cdots < a_n \), where each \( a_i \) is measured from the starting point. The only places you are allowed to stop are at these hotels, but you can choose which of the hotels you stop at. You must stop at the final hotel (at distance \( a_n \)), which is your destination.\\
+You’d ideally like to travel 200 miles a day, but this may not be possible (depending on the spacing of the hotels). If you travel \( x \) miles during a day, the penalty for that day is \( (200 - x)^2 \). You want to plan your trip so as to minimize the total penalty—that is, the sum, over all travel days, of the daily penalties.
+Give an efficient algorithm that determines the optimal sequence of hotels at which to stop.
+
+\section{6.3}
+Yuckdonald’s is considering opening a series of restaurants along Quaint Valley Highway (QVH). The \( n \) possible locations are along a straight line, and the distances of these locations from the start of QVH are, in miles and in increasing order, \( m_1, m_2, \ldots, m_n \). The constraints are as follows:
+\begin{itemize}
+    \item At each location, Yuckdonald’s may open at most one restaurant. The expected profit from opening a restaurant at location \( i \) is \( p_i \), where \( p_i > 0 \) and \( i = 1, 2, \ldots, n \).
+    \item Any two restaurants should be at least \( k \) miles apart, where \( k \) is a positive integer.
+\end{itemize}
+
+Give an efficient algorithm to compute the maximum expected total profit subject to the given constraints.
+\section{6.4}
+
+You are given a string of \( n \) characters \( s[1 \ldots n] \), which you believe to be a corrupted text document in which all punctuation has vanished (so that it looks something like “itwasthebestoftimes...”). You wish to reconstruct the document using a dictionary, which is available in the form of a Boolean function dict(·): for any string \( w \),
+\[
+\text{dict}(w) =
+\begin{cases} 
+\text{true} & \text{if } w \text{ is a valid word} \\
+\text{false} & \text{otherwise}
+\end{cases}
+\]
+
+
+\begin{enumerate}
+    \item[(a)] Give a dynamic programming algorithm that determines whether the string \( s[\cdot] \) can be reconstituted as a sequence of valid words. The running time should be at most \( O(n^2) \), assuming calls to dict take unit time.
+    \item[(b)] In the event that the string is valid, make your algorithm output the corresponding sequence of words.
+\end{enumerate}
+
+\section{6.11}
+Given two strings \( x = x_1 x_2 \cdots x_n \) and \( y = y_1 y_2 \cdots y_m \), we wish to find the length of their longest common subsequence, that is, the largest \( k \) for which there are indices \( i_1 < i_2 < \cdots < i_k \) and \( j_1 < j_2 < \cdots < j_k \) with \( x_{i_1} x_{i_2} \cdots x_{i_k} = y_{j_1} y_{j_2} \cdots y_{j_k} \). Show how to do this in time \( O(mn) \).
+\end{document}
