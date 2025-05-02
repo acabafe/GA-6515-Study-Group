@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathtools}
+
+\title{Dynamic Programming Problems}
+\author{Algorithms Assignment}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Dynamic Programming Problems}
+
+\begin{enumerate}[label=\textbf{6.\arabic*.}]
+\setcounter{enumi}{6}
+
+\item A subsequence is palindromic if it is the same whether read left to right or right to left. For
+instance, the sequence
+$A, C, G, T, G, T, C, A, A, A, A, T, C, G$
+has many palindromic subsequences, including $A, C, G, C, A$ and $A, A, A, A$ (on the other hand,
+the subsequence $A, C, T$ is not palindromic). Devise an algorithm that takes a sequence $x[1 \ldots n]$
+and returns the (length of the) longest palindromic subsequence. Its running time should be
+$O(n^2)$.
+
+\setcounter{enumi}{16}
+
+\item Given an unlimited supply of coins of denominations $x_1, x_2, \ldots, x_n$, we wish to make change for
+a value $v$; that is, we wish to find a set of coins whose total value is $v$. This might not be possible:
+for instance, if the denominations are 5 and 10 then we can make change for 15 but not for 12.
+Give an $O(nv)$ dynamic-programming algorithm for the following problem.
+
+\textbf{Input:} $x_1, \ldots, x_n; v$.
+
+\textbf{Question:} Is it possible to make change for $v$ using coins of denominations $x_1, \ldots, x_n$?
+
+\item Consider the following variation on the change-making problem (Exercise 6.17): you are given
+denominations $x_1, x_2, \ldots, x_n$, and you want to make change for a value $v$, but you are allowed to
+use each denomination at most once. For instance, if the denominations are $1, 5, 10, 20$, then you
+can make change for $16 = 1 + 15$ and for $31 = 1 + 10 + 20$ but not for $40$ (because you can't use 20
+twice).
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\textbf{First Binary Search Tree:}
+\begin{verbatim}
+       end
+      /    \
+    do      then
+   /  \     /   \
+begin else  if   while
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\textbf{Second Binary Search Tree:}
+\begin{verbatim}
+       do
+      /  \
+   begin  while
+          /  
+         if   
+        /  \
+     else   then
+            \
+             end
+\end{verbatim}
+\end{minipage}
+\caption{Two binary search trees for the keywords of a programming language.}
+\label{fig:bst}
+\end{figure}
+
+\textbf{Input:} Positive integers $x_1, x_2, \ldots, x_n$; another integer $v$.
+
+\textbf{Output:} Can you make change for $v$, using each denomination $x_i$ at most once?
+
+Show how to solve this problem in time $O(nv)$.
+
+\item Here is yet another variation on the change-making problem (Exercise 6.17).
+Given an unlimited supply of coins of denominations $x_1, x_2, \ldots, x_n$, we wish to make change for
+a value $v$ using at most $k$ coins; that is, we wish to find a set of $\leq k$ coins whose total value is $v$.
+This might not be possible: for instance, if the denominations are 5 and 10 and $k = 6$, then we
+can make change for 55 but not for 65. Give an efficient dynamic-programming algorithm for the
+following problem.
+
+\textbf{Input:} $x_1, \ldots, x_n; k; v$.
+
+\textbf{Question:} Is it possible to make change for $v$ using at most $k$ coins, of denominations
+$x_1, \ldots, x_n$?
+
+\item \textbf{Optimal binary search trees.} Suppose we know the frequency with which keywords occur in
+programs of a certain language, for instance:
+\begin{center}
+\begin{tabular}{ll}
+\texttt{begin} & 5\% \\
+\texttt{do} & 40\% \\
+\texttt{else} & 8\% \\
+\texttt{end} & 4\% \\
+\texttt{if} & 10\% \\
+\texttt{then} & 10\% \\
+\texttt{while} & 23\% \\
+\end{tabular}
+\end{center}
+
+We want to organize them in a binary search tree, so that the keyword in the root is alphabetically
+bigger than all the keywords in the left subtree and smaller than all the keywords in the right
+subtree (and this holds for all nodes).
+
+Figure 6.12 has a nicely-balanced example on the left. In this case, when a keyword is being
+looked up, the number of comparisons needed is at most three: for instance, in finding \texttt{while},
+only the three nodes \texttt{end}, \texttt{then}, and \texttt{while} get examined. But since we know the frequency
+with which keywords are accessed, we can use an even more fine-tuned cost function, the average
+number of comparisons to look up a word. For the search tree on the left, it is
+\begin{align*}
+\text{cost} &= 1(0.04) + 2(0.40 + 0.10) + 3(0.05 + 0.08 + 0.10 + 0.23)\\
+&= 2.42
+\end{align*}
+
+By this measure, the best search tree is the one on the right, which has a cost of 2.18.
+
+Give an efficient algorithm for the following task.
+
+\textbf{Input:} $n$ words (in sorted order); frequencies of these words: $p_1, p_2, \ldots, p_n$.
+
+\textbf{Output:} The binary search tree of lowest cost (defined above as the expected number
+of comparisons in looking up a word).
+
+\end{enumerate}
+
+\end{document}
